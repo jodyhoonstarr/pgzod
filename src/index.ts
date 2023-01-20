@@ -5,7 +5,7 @@ import { hideBin } from "yargs/helpers";
 import { join } from "path";
 import { mkdir, rm, writeFile } from "fs/promises";
 import { sql, DatabasePool } from "slonik";
-import type { Arguments, Argv } from "yargs";
+import type { ArgumentsCamelCase, CommandBuilder, } from "yargs";
 import yargs from "yargs/yargs";
 import { z } from "zod";
 
@@ -56,7 +56,7 @@ export type Options = {
  * Please refer to Yargs documentation to see how it works:
  * https://www.npmjs.com/package/yargs
  */
-export const builder: (args: Argv<Record<string, unknown>>) => Argv<Options> = (
+export const builder: CommandBuilder = (
   y
 ) =>
   y
@@ -115,13 +115,14 @@ export const builder: (args: Argv<Record<string, unknown>>) => Argv<Options> = (
     })
     // Deactivate the use of environment variables for option configurations.
     .env(true);
+
 /**
  * Yargs default command handler function.
  * Defaults are duplicated to allow importing this function from another module.
  * @param argv - Command options.
  */
 export const handler = async (
-  argv: Arguments<Options> | Options
+  argv: ArgumentsCamelCase<any>
 ): Promise<void> => {
   const {
     clean = true,
@@ -181,7 +182,7 @@ export const handler = async (
       {}
     );
 
-    const customZodTypesMap = customZodTypes.reduce((acc, pair) => {
+    const customZodTypesMap = customZodTypes.reduce((acc: any, pair: { split: (arg0: string) => [any, any]; }) => {
       const [postgresType, zodValidator] = pair.split("=");
       return { ...acc, [postgresType]: zodValidator };
     }, {});
