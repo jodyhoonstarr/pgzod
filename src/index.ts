@@ -8,6 +8,7 @@ import { sql, DatabasePool } from "slonik";
 import type { ArgumentsCamelCase, CommandBuilder, } from "yargs";
 import yargs from "yargs/yargs";
 import { z } from "zod";
+import { singular } from "pluralize"
 
 import { createPool } from "./lib/createPool";
 import type { CreatePoolProps } from "./lib/createPool";
@@ -276,13 +277,14 @@ async function runWithStrategy({
         template.push(`);\n`);
       }
 
+      const singularTableName = singular(table_name)
       const name = pascalCase(
-        strategy === "write" ? table_name : table_name + "_" + filetype
+        strategy === "write" ? singularTableName : singularTableName + "_" + filetype
       );
       template.push(`export const ${name} = z.object({`);
 
       for (const column of columns) {
-        const name = column.column_name;
+        const name = camelCase(column.column_name);
         let line = `${name}: `;
 
         const type = typesMap[column.udt_name];

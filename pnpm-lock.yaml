@@ -5,6 +5,7 @@ specifiers:
   '@types/dedent': ^0.7.0
   '@types/jest': ^26.0.21
   '@types/node': ^15.0.1
+  '@types/pluralize': ^0.0.29
   '@types/yargs': ^17.0.4
   '@typescript-eslint/eslint-plugin': ^4.19.0
   '@typescript-eslint/parser': ^4.19.0
@@ -16,6 +17,7 @@ specifiers:
   eslint: ^7.22.0
   jest: ^26.6.3
   ora: ^6.1.0
+  pluralize: ^8.0.0
   slonik: ^28.1.0
   ts-jest: ^26.5.4
   ts-node: ^10.9.1
@@ -31,6 +33,7 @@ dependencies:
   cli-spinners: 2.7.0
   dedent: 0.7.0
   ora: 6.1.2
+  pluralize: 8.0.0
   slonik: 28.2.0
   yargs: 17.6.2
   zod: 3.20.2
@@ -40,6 +43,7 @@ devDependencies:
   '@types/dedent': 0.7.0
   '@types/jest': 26.0.24
   '@types/node': 15.14.9
+  '@types/pluralize': 0.0.29
   '@types/yargs': 17.0.20
   '@typescript-eslint/eslint-plugin': 4.33.0_thyv6urrmcfyirt6hwk42bhgva
   '@typescript-eslint/parser': 4.33.0_yfqovispp7u7jaktymfaqwl2py
@@ -808,6 +812,10 @@ packages:
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
+    dev: true
+
+  /@types/pluralize/0.0.29:
+    resolution: {integrity: sha512-BYOID+l2Aco2nBik+iYS4SZX0Lf20KPILP5RGmM1IgzdwNdTs0eebiFriOPcej1sX9mLnSoiNte5zcFxssgpGA==}
     dev: true
 
   /@types/prettier/2.7.2:
@@ -3897,6 +3905,11 @@ packages:
     dependencies:
       find-up: 4.1.0
     dev: true
+
+  /pluralize/8.0.0:
+    resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
+    engines: {node: '>=4'}
+    dev: false
 
   /posix-character-classes/0.1.1:
     resolution: {integrity: sha512-xTgYBc3fuo7Yt7JbiuFxSYGToMoz8fLoE6TC9Wx1P/u+LfeThMOAqmuyECnlBaaJb+u1m9hHiXUEtwW4OzfUJg==}

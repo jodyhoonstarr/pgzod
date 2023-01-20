@@ -36,6 +36,7 @@
     "@types/dedent": "^0.7.0",
     "@types/jest": "^26.0.21",
     "@types/node": "^15.0.1",
+    "@types/pluralize": "^0.0.29",
     "@types/yargs": "^17.0.4",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
@@ -54,6 +55,7 @@
     "cli-spinners": "^2.6.1",
     "dedent": "^0.7.0",
     "ora": "^6.1.0",
+    "pluralize": "^8.0.0",
     "slonik": "^28.1.0",
     "yargs": "^17.2.1",
     "zod": "^3.11.4"
