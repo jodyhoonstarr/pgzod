@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { camelCase, pascalCase } from "change-case";
+import { toCamel, toPascal } from "postgres";
 import { hideBin } from "yargs/helpers";
 import { join } from "path";
 import { mkdir, rm, writeFile } from "fs/promises";
@@ -278,13 +278,13 @@ async function runWithStrategy({
       }
 
       const singularTableName = singular(table_name)
-      const name = pascalCase(
+      const name = toPascal(
         strategy === "write" ? singularTableName : singularTableName + "_" + filetype
       );
       template.push(`export const ${name} = z.object({`);
 
       for (const column of columns) {
-        const name = camelCase(column.column_name);
+        const name = toCamel(column.column_name);
         let line = `${name}: `;
 
         const type = typesMap[column.udt_name];
@@ -305,7 +305,7 @@ async function runWithStrategy({
       template.push(`});\n`);
       template.push(`export type ${name}T = z.infer<typeof ${name}>;\n`);
 
-      const file = camelCase(name);
+      const file = toCamel(name);
       await writeFile(join(output, `${file}.ts`), template.join("\n"));
 
       index.push(`export type { ${name}T } from './${file}';`);
